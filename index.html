@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>liste des document <h1>
+  </title>
+  <style>
+    .hide {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="page1" class="hide">
+    <p>Visualisation du bordereau</p>
+    <form id="form1">
+      <label for="bordereau">Commande de reprographie n°</label>
+      <select name="bordereau">
+        <option value="1">01</option>
+        <option value="2">02</option>
+        <option value="3">03</option>
+        <option value="4">04</option>
+      </select>
+      <button>Saisir la date de réception</button>
+      <!-- <button>PDF</button> -->
+    </form>
+  </div>
+  <div id="page2" class="hide">
+    <p>Saisie de la date de réception</p>
+    <form id="form2">
+      <label for="date">Date de réception</label>
+      <input type="date" name="date"/>
+      <button>Confirmer la réception</button>
+    </form>
+  </div>
+  <div id="page3" class="hide">
+    <p>
+      Merci d'avoir confirmer la réception du bordereau n°<span id="bordereau"></span>
+      (date enregistrée: <span id="date"></span>).
+    </p>
+  </div>
+  <div id="pageError" class="hide">
+  </div>
+  <script src="./index.js"></script>
+</body>
+</html>
