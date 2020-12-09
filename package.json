@@ -1,0 +1,22 @@
+{
+  "name": "bordereau-qr-code",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asibille/bordereau-QR-Code.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asibille/bordereau-QR-Code/issues"
+  },
+  "homepage": "https://github.com/asibille/bordereau-QR-Code#readme",
+  "dependencies": {
+    "qrcode": "^1.4.4"
+  }
+}

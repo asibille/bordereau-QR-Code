@@ -1,0 +1,42 @@
+body{
+color: #000000
+}
+
+.align-right{
+
+    text-align: right;
+
+
+
+}
+
+.centre{
+
+    text-align: center;
+
+}
+.encadrer-un-contenu{
+  border: 1px solid black; padding: 5px; 
+}
+
+
+.count {
+  padding-left: 48px;
+}
+
+button {
+  background-color: #222d32;
+  border: none;
+  color: #ffffff;
+  margin: 10px;
+  padding: 10px;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  font-size: 15px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #19A194;
+  color: #ffffff;
+}

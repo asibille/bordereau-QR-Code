@@ -9,9 +9,21 @@ if (page === '1') {
   // action de confirmation
   const form = document.querySelector('#form1');
   const selectBordereau = document.querySelector('select[name=bordereau]');
+  const imgQRCode = document.getElementById('qr-code');
+  const updateQRCode = () => {
+    QRCode.toDataURL("./index.html?page=2&bordereau=" + selectBordereau.value, (err, url) => {
+      imgQRCode.setAttribute('src', url);
+    });
+  }
+  updateQRCode();
+  selectBordereau.addEventListener('change', event => updateQRCode());
   form.addEventListener('submit', event => {
     event.preventDefault();
-    window.location.href = "./index.html?page=2&bordereau=" + selectBordereau.value;
+    if (event.submitter.id === 'confirmDateButton') {
+      window.location.href = "./index.html?page=2&bordereau=" + selectBordereau.value;  
+    } else if (event.submitter.id === 'pdfButton') {
+      window.location.href = "https://www.google.com";
+    }
   });
 } else if (page === '2') {
   // affichage de la page 2

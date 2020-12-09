@@ -2,6 +2,10 @@
 <html>
 
 <head>
+<div class ="géorgia">
+  <body style="background-color:#01e9c26e;">
+    <div class="linear-gradient"></div>
+</body>
   <meta charset="utf-8" />
   <title>liste des document <h1>
   </title>
@@ -11,39 +15,132 @@
     }
   </style>
 </head>
+<head>
+
+  <meta charset="utf-8" />
+  <title>liste des document</title>
+  <style>
+    .bg-grey {
+      background-color:#0051ff60;
+    }
+
+    .row {
+      padding: 4px;
+    }
+
+    .name {
+      width: 500px;
+    }
+
+    .bold {
+      font-weight: bold;
+    }
+  </style>
+  <link rel="stylesheet" href="./styles.css">
+
+
+
+</head>
 
 <body>
   <div id="page1" class="hide">
-    <p>Visualisation du bordereau</p>
     <form id="form1">
-      <label for="bordereau">Commande de reprographie n°</label>
-      <select name="bordereau">
-        <option value="1">01</option>
-        <option value="2">02</option>
-        <option value="3">03</option>
-        <option value="4">04</option>
-        <option value="5">05</option>
-      </select>
-      <button>Saisir la date de réception</button>
-      <!-- <button>PDF</button> -->
+      <div class="align-right">
+        <h1>
+          <label for="bordereau">Commande de reprographie n°</label>
+          <select name="bordereau">
+            <option value="1">01</option>
+            <option value="2">02</option>
+            <option value="3">03</option>
+            <option value="4">04</option>
+          </select>
+        </h1>
+      </div>
+      <br>
+      <h2>Emetteur du bordereau</h2>
+      <div class="encadrer-un-contenu"style="width: 18rem;">
+        <p>Axel Sibille</p>
+        <p>asibille@b-p.fr</p>
+        <p>Builders and Parteners</p>
+        <p>20 rue Troyon</p>
+        <p>92310 Sevre</p>
+      </div>
+      <img id="qr-code" src="" />
+      <div style="writing-mode:tb-rl; transform: rotate(180deg);">
+        <div style="margin-right: 600px; margin-top: 0px;">
+          <div class="encadrer-un-contenu"style="width: 10rem;">
+            <p class="bold">ARTELIA MOEX</p>
+            <p class="bold">SCYNA4</p>
+            <p class="bold">SOCOTEC</p>
+          </div>
+        </div>
+      </div>
+      <br><br><br><br>
+      <div class="row bg-grey">
+        <span class="name">
+          BIO_EXE_BYE_CHM_PLN_Z03_N02_31208_D_Implantation-Charpente-PH02
+        </span>
+        <span class="count">1</span>
+        <span class="count">1</span>
+        <span class="count">1</span>
+      </div>
+      <div class="row">
+        <span class="name">
+          BIO_EXE_BYE_CHM_PLN_Z03_N03_31308_D_Implantation-Charpente-PH03
+        </span>
+        <span class="count">1</span>
+        <span class="count">1</span>
+        <span class="count">1</span>
+      </div>
+      <div class="row bg-grey">
+        <span class="name">
+          BIO_EXE_BYE_CHM_PLN_Z03_N04_31408_D_Implantation-Charpente-PH04
+        </span>
+        <span class="count">1</span>
+        <span class="count">1</span>
+        <span class="count">1</span>
+      </div>
+      <div class="row">
+        <span class="name">
+          BIO_EXE_BYE_CHM_PLN_Z03_N05_31508_D_Implantation-Charpente-PH05
+        </span>
+        <span class="count">1</span>
+        <span class="count">1</span>
+        <span class="count">1</span>
+      </div>
+      <div class="row bg-grey">
+        <span class="name">
+          BIO_EXE_BYE_CHM_PLN_Z03_N06_31608_D_Implantation-Charpente-PH06
+        </span>
+        <span class="count">1</span>
+        <span class="count">1</span>
+        <span class="count">1</span>
+      </div>
+      <div style="margin-right: 600px; margin-top: 100px;"></div>
+      <div class="centre ">
+        <button id="confirmDateButton">Confirm Date</button>
+        <button id="pdfButton">PDF</button>
+      </div>
     </form>
   </div>
   <div id="page2" class="hide">
     <p>Saisie de la date de réception</p>
     <form id="form2">
       <label for="date">Date de réception</label>
-      <input type="date" name="date"/>
-      <button>Confirmer la réception</button>
-    </form>
+      <input type="date" name="date">
   </div>
   <div id="page3" class="hide">
     <p>
-      Merci d'avoir confirmer la réception du bordereau n°<span id="bordereau"></span>
-      (date enregistrée: <span id="date"></span>).
+    <div> <input type="submit" value="Merci d'avoir confirmer la réception du bordereau">
+      <span id="date"></span></div>
     </p>
+    <span id="bordereau"></span>
   </div>
+</div>
   <div id="pageError" class="hide">
   </div>
+  <script src="./node_modules/qrcode/build/qrcode.min.js"></script>
   <script src="./index.js"></script>
 </body>
+</div>
 </html>
