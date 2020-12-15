@@ -27,7 +27,8 @@ if (page === '1') {
 
   function printToPdf(bordereau) {
     // on récupère le html que l'on veut imprimer en pdf
-    const html = document.getElementById('page1').innerHTML;
+    let html = document.getElementById('page1').innerHTML;
+    html = html.replace('<img id="qr-code" style="display: none;"', '<img id="qr-code"');
     // on fait une requête vers le serveur gotenberg
     const formData = new FormData();
     formData.append('file', new Blob([html], {type: 'text/html'}), 'index.html');
