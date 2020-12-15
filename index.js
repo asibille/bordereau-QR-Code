@@ -2,7 +2,6 @@ const urlParams = new URLSearchParams(window.location.search);
 const page = urlParams.get('page');
 const bordereau = urlParams.get('bordereau');
 const date = urlParams.get('date');
-
 if (page === '1') {
   // affichage de la page 1
   document.getElementById('page1').classList.remove('hide');
@@ -48,4 +47,25 @@ if (page === '1') {
   spanDate.innerHTML = date;
 } else {
   document.getElementById('pageError').classList.remove('hide');
-}
+
+  function printToPdf(bordereau) {
+    // on récupère le html que l'on veut imprimer en pdf
+    const html = document.getElementById('qr-code').html;
+    // on fait une requête vers le serveur gotenberg
+    const formData = new FormData();
+    formData.append('file', new Blob([html], {type: 'text/html'}), 'index.html');
+    fetch('http://localhost:3000/convert/html', {method: 'POST', body: formData})
+      .then(response => response.blob())
+      .then(blob => {
+        // on déclenche le téléchargement de la réponse sous la forme d'un fichier
+        var a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = window.URL.createObjectURL(blob);
+        a.download = `bordereau n°99${bordereau}.pdf`;
+        document.body.appendChild(a);
+        a.click();    
+        a.remove();
+        querySelector='qr-code.html';
+      });
+  }
+} 
