@@ -24,6 +24,26 @@ if (page === '1') {
       window.location.href = "https://www.google.com";
     }
   });
+
+  function printToPdf(bordereau) {
+    // on récupère le html que l'on veut imprimer en pdf
+    const html = document.getElementById('page1').innerHTML;
+    // on fait une requête vers le serveur gotenberg
+    const formData = new FormData();
+    formData.append('file', new Blob([html], {type: 'text/html'}), 'index.html');
+    fetch('/convert/html', {method: 'POST', body: formData})
+      .then(response => response.blob())
+      .then(blob => {
+        // on déclenche le téléchargement de la réponse sous la forme d'un fichier
+        var a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = window.URL.createObjectURL(blob);
+        a.download = `bordereau n°${bordereau}.pdf`;
+        document.body.appendChild(a);
+        a.click();    
+        a.remove();
+      });
+  }
 } else if (page === '2') {
   // affichage de la page 2
   document.getElementById('page2').classList.remove('hide');
@@ -47,25 +67,5 @@ if (page === '1') {
   spanDate.innerHTML = date;
 } else {
   document.getElementById('pageError').classList.remove('hide');
-
-  function printToPdf(bordereau) {
-    // on récupère le html que l'on veut imprimer en pdf
-    const html = document.getElementById('qr-code').html;
-    // on fait une requête vers le serveur gotenberg
-    const formData = new FormData();
-    formData.append('file', new Blob([html], {type: 'text/html'}), 'index.html');
-    fetch('http://localhost:3000/convert/html', {method: 'POST', body: formData})
-      .then(response => response.blob())
-      .then(blob => {
-        // on déclenche le téléchargement de la réponse sous la forme d'un fichier
-        var a = document.createElement('a');
-        a.style.display = 'none';
-        a.href = window.URL.createObjectURL(blob);
-        a.download = `bordereau n°99${bordereau}.pdf`;
-        document.body.appendChild(a);
-        a.click();    
-        a.remove();
-        querySelector='qr-code.html';
-      });
-  }
-} 
+  window.location.href = "./index.html?page=1";
+}
