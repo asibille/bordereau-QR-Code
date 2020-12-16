@@ -13,7 +13,7 @@ if (page === '1') {
     QRCode.toDataURL("./index.html?page=2&bordereau=" + selectBordereau.value, (err, url) => {
       imgQRCode.setAttribute('src', url);
     });
-  }
+  };
   updateQRCode();
   selectBordereau.addEventListener('change', event => updateQRCode());
   form.addEventListener('submit', event => {
@@ -21,13 +21,20 @@ if (page === '1') {
     if (event.submitter.id === 'confirmDateButton') {
       window.location.href = "./index.html?page=2&bordereau=" + selectBordereau.value;  
     } else if (event.submitter.id === 'pdfButton') {
-      window.location.href = "https://www.google.com";
+      printToPdf(selectBordereau.value);
     }
   });
 
   function printToPdf(bordereau) {
     // on récupère le html que l'on veut imprimer en pdf
     let html = document.getElementById('page1').innerHTML;
+    // hide select
+    html = html.replace('<select name="bordereau"', ' <select name="bordereau" style="display: none;"');
+    // add bordereau to label
+    html = html.replace('n°</label>', 'n°' + bordereau + '</label>');
+    // hide buttons
+    html=html.replace('id="buttons"','id="buttons" style="display: none;"');
+    // display qr-code
     html = html.replace('<img id="qr-code" style="display: none;"', '<img id="qr-code"');
     // on fait une requête vers le serveur gotenberg
     const formData = new FormData();
