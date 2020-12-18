@@ -26,6 +26,13 @@ if (page === '1') {
   });
 
   function printToPdf(bordereau) {
+    const style = `
+      <style>
+        p {
+          background-color: #eee;
+        }
+      </style>
+    `;
     // on récupère le html que l'on veut imprimer en pdf
     let html = document.getElementById('page1').innerHTML;
     // hide select
@@ -38,7 +45,7 @@ if (page === '1') {
     html = html.replace('<img id="qr-code" style="display: none;"', '<img id="qr-code"');
     // on fait une requête vers le serveur gotenberg
     const formData = new FormData();
-    formData.append('file', new Blob([html], {type: 'text/html'}), 'index.html');
+    formData.append('file', new Blob([style + html], {type: 'text/html'}), 'index.html');
     fetch('/convert/html', {method: 'POST', body: formData})
       .then(response => response.blob())
       .then(blob => {
