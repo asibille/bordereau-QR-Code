@@ -122,17 +122,19 @@
     </form>
   </div>
   <div id="page2" class="hide">
-    <p>Saisie de la date de réception</p>
     <form id="form2">
       <label for="date">Date de réception</label>
       <input type="date" name="date">
+      <button>Confirmer la date de réception</button>
+    </form>
   </div>
   <div id="page3" class="hide">
     <p>
-    <div> <input type="submit" value="Merci d'avoir confirmer la réception du bordereau">
-      <span id="date"></span></div>
+      Merci d'avoir confirmer la réception du bordereau n°<span id="bordereau"></span> au <span id="date"></span>!
     </p>
-    <span id="bordereau"></span>
+    <a href="/">
+      <button>Revenir à l'accueil</button>
+    </a>
   </div>
 </div>
   <div id="pageError" class="hide">

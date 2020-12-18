@@ -10,7 +10,7 @@ if (page === '1') {
   const selectBordereau = document.querySelector('select[name=bordereau]');
   const imgQRCode = document.getElementById('qr-code');
   const updateQRCode = () => {
-    QRCode.toDataURL("./index.html?page=2&bordereau=" + selectBordereau.value, (err, url) => {
+    QRCode.toDataURL("http://localhost:8080/index.html?page=2&bordereau=" + selectBordereau.value, (err, url) => {
       imgQRCode.setAttribute('src', url);
     });
   };
@@ -53,8 +53,13 @@ if (page === '1') {
       });
   }
 } else if (page === '2') {
+  const page2Div = document.getElementById('page2');
   // affichage de la page 2
-  document.getElementById('page2').classList.remove('hide');
+  page2Div.classList.remove('hide');
+  // ajouter le message d'information
+  const infoP = document.createElement('p');
+  infoP.innerHTML = 'Saisie de la date de réception du bordereau n°' + bordereau;
+  page2Div.insertAdjacentElement('afterbegin', infoP);
   // remplissage de la date du jour
   const inputDate = document.querySelector('input[name=date]');
   inputDate.value = new Date().toISOString().slice(0, 10);
